@@ -1,0 +1,9 @@
+numpy
+flask
+flask_cors
+spacy
+nltk
+normalise
+scikit-learn==0.22.1
+g2p_en
+numerizer

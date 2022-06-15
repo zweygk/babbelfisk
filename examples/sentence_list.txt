@@ -1,0 +1,4 @@
+Hello, World!
+Hey now, brown cow!
+A monad is just a monoid in the category of endofunctors, what's the problem?
+Now you've done it!
