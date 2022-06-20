@@ -2,6 +2,7 @@
 
 FROM python:3.8-slim-buster
 
+RUN mkdir /app
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
@@ -14,4 +15,4 @@ EXPOSE 5002
 
 COPY . .
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=5002"]
+#CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=5002"]

@@ -97,6 +97,8 @@ def main():
         lex = lex
     )
 
+    print(lex)
+
     return json_output
 
 
