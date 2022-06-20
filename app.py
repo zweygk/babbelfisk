@@ -3,6 +3,7 @@ from flask_cors import CORS, cross_origin
 from copy import deepcopy
 from numerizer import numerize
 from g2p_en import G2p
+from collections import OrderedDict
 
 import nltk
 import string
@@ -11,6 +12,7 @@ import spacy
 
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 CORS(app)
 
 nlp = spacy.load("en_core_web_sm")
@@ -57,10 +59,12 @@ def main():
                     l2.append("".join([token.text, next_token.text]))
                 else:
                     l2.append(token.text)
+            else:
+                l2.append(token.text)
         return l2
 
     def _get_cmudict_pronunciations(wordlist):
-        lex = {}
+        lex = OrderedDict()
         for word in wordlist:
             try:
                 pronunciation = arpabet[word.lower()][0]
@@ -96,8 +100,6 @@ def main():
     json_output = jsonify(
         lex = lex
     )
-
-    print(lex)
 
     return json_output
 
