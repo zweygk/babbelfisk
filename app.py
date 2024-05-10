@@ -84,9 +84,20 @@ def main():
                 lex[word] = p_nopos
         return lex
 
+    def fix_a_to_numeral_conversion(raw_string, numerized_string):
+        string_difference_positions = [ i for i in range(len(raw_string)) if raw_string[i] != numerized_string[i] ]
+        temp_string_list = list(numerized_string)
+        for i in string_difference_positions:
+            if raw_string[i].lower() == "a" and numerized_string[i] == "1":
+                temp_string_list[i] = raw_string[i]
+        return ''.join(temp_string_list)
+
     def process_and_generate(text):
         normalized_text = _normalize(text)
+        print(normalized_text)
         renumerized_text = numerize(normalized_text)
+        renumerized_text = fix_a_to_numeral_conversion(normalized_text, renumerized_text)
+        print(renumerized_text)
         doc = nlp(renumerized_text)
         removed_punct = _remove_punct(doc)
         cmu_lex = _get_cmudict_pronunciations(removed_punct)
