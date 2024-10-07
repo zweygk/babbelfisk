@@ -21,3 +21,5 @@ curl -X POST http://127.0.0.1:5002 -H 'Content-Type: application/json' -d '{"sen
 Example output
 
 > {"lex":{"BROWN":["B","R","AW","N"],"COW":["K","AW"],"HEY":["HH","EY"],"NOW":["N","AW"]}}
+
+Uses G2P (grapheme-to-phoneme) abandonware. Plans to include custom model training options in the future
